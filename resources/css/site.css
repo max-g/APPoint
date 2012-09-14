@@ -1,0 +1,10 @@
+body { font: 13px Arial,sans-serif; margin: 0; color: grey; }
+a, a:visited { color: darkblue; text-decoration: none; }
+a:hover, a.active { color: blue; }
+
+ul.menu { padding: 0; margin: 0; background: lightgray; font-size: 18px; }
+ul.menu li { display: inline-block; width: 32%; text-align: center; vertical-align: middle; border-left: 1px solid white; }
+ul.menu li:first-child { border-left: 0; width: 34%; }
+ul.menu li a { display: inline-block; width: 100%; height: 40px; padding-top: 15px; }
+
+div.content { padding: 20px; }
