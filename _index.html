@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html xmlns:fb="http://ogp.me/ns/fb#" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns:fb="http://ogp.me/ns/fb#" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns:fb="http://ogp.me/ns/fb#" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns:fb="http://ogp.me/ns/fb#" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+        <div id="fb-root"></div>
+        <fb:activity site="https://fbapps.my.phpcloud.com/appointments/" action="appointments-app:review,appointments-app:rate"></fb:activity>
+        <div id="og-actions">
+            <a href="javascript:;" id="rate">Rate</a>
+            <select id="rating">
+                <option value="1">1</option>                
+                <option value="2">2</option>                
+                <option value="3">3</option>                
+                <option value="4">4</option>                
+                <option value="5">5</option>                
+            </select><br />
+            <a href="javascript:;" data-action="review">Review</a>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            app.dependencies = { 
+                facebookSDK: false, 
+                ready: false, 
+            };
+
+            window.fbAsyncInit = function() {
+                app.dependencies.facebookSDK = true;
+                $(document).trigger('checkdependencies');
+            };
+            
+            // Load Facebook SDK Asynchronously
+            (function(d){
+                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement('script'); js.id = id; js.async = true;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                ref.parentNode.insertBefore(js, ref);
+            }(document));
+
+            $(document).ready(function() {
+                app.dependencies.ready = true;
+                $(document).trigger('checkdependencies');                
+            })
+            .on('checkdependencies', function() {
+    
+                for(var d in app.dependencies) {
+                    if(!app.dependencies[d])
+                        return;
+                }
+
+                // And we're ready to go, start all the things !
+                app.page = new app.Index(); 
+            });
+        </script>
+    </body>
+</html>
