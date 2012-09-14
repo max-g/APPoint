@@ -20,9 +20,8 @@
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
         <div id="fb-root"></div>
-        <fb:activity site="https://fbapps.my.phpcloud.com/appointments/" action="appointments-app:review,appointments-app:rate"></fb:activity>
+        <fb:activity site="https://fbapps.my.phpcloud.com/appoint/" action="appointments-dev:rate"></fb:activity>
         <div id="og-actions">
-            <a href="javascript:;" id="rate">Rate</a>
             <select id="rating">
                 <option value="1">1</option>                
                 <option value="2">2</option>                
@@ -30,7 +29,8 @@
                 <option value="4">4</option>                
                 <option value="5">5</option>                
             </select><br />
-            <a href="javascript:;" data-action="review">Review</a>
+            <textarea id="review"></textarea>
+            <a href="javascript:;" id="rate">Rate</a>
         </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.0.min.js"><\/script>')</script>

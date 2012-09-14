@@ -3,8 +3,8 @@ var app = app || {};
 app.page = null;
 
 app.configuration = {
-    baseUrl: 'https://fbapps.my.phpcloud.com/appointments/',
-    ogNamespace: 'appointments-app'
+    baseUrl: 'https://fbapps.my.phpcloud.com/appoint/',
+    ogNamespace: 'appointments-dev'
 };
 
 app.Index = function() {
@@ -20,7 +20,7 @@ app.Index.prototype.init_ = function() {
     
     FB.init({
       appId      : '416854151706592', // App ID
-      channelUrl : '//fbapps.my.phpcloud.com/appointments/channel.php', // Channel File
+      channelUrl : app.configuration.baseUrl.replace(/https?:/, '') + 'channel.php', // Channel File
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
@@ -39,14 +39,16 @@ app.Index.prototype.bindEvents_ = function() {
 
     this.dom_.rate.on('click', function() {
         var me = $(this),
-            rating = $('#rating').val();
+            rating = $('#rating').val(),
+            review = $('#review').val();
         
         self.executeIfAuthorized(function() {
             FB.api('/me/' + app.configuration.ogNamespace + ':rate', 
                 'post',
                 {
                     service: app.configuration.baseUrl + 'service.php?id=1',
-                    rating: rating
+                    rating: rating,
+                    review: review
                 },
                 function(data) {
                     console.log(arguments);
